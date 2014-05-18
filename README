@@ -1,4 +1,10 @@
+This is vide 0.5.2, which can be build, but it is not fully functional as
+some crude changes were applied to allow building it without GNOME
+environment and without libzvt.
+
+There is a theoretical possibility that vifm someday might have support for
+a GUI frontend, in which case vide can serve as a prototype.
+
+
 The help menu lists all of the commands used in vide.  :h [Enter] or [Alt] h 
 will activate the help memu.
-
-
