@@ -1,0 +1,12 @@
+Vide is based on the source code of emelfm by Michael Clark.
+
+Sergei Gnezdov worked on the FreeBSD port of Vide0.5 and contributed several
+patches including Ctrl + G to show the file information on the status bar.
+
+Colman Reilly careilly@thecia.ie maintains the FreeBSD port available from
+http://www.freebsd.org/ports/x11-fm.html
+
+
+Bug reports or questions should be sent to ksteen@users.sourceforge.net
+
+

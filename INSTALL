@@ -1,0 +1,18 @@
+Installation
+~~~~~~~~~~~~
+You need:
+
+	Gnome libraries installed.
+
+	./configure
+	make
+	("su" if you don't have access to /usr/local/bin)
+	make install
+
+Start Vide, type :h[Enter] and play with the commands listed in the 
+help file.
+
+
+
+
+

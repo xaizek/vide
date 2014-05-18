@@ -1,0 +1,159 @@
+
+
+The basic vi keybindings are used to move through the file lists and menus.
+
+	j - moves down
+	k - moves up
+	l - moves right
+	h - moves left
+	
+	ctrl f  moves forward one page
+	ctrl b moves back one page
+
+	gg moves to the top of the list
+	G moves to the bottom of the list
+
+	dd moves the selected file to the trash directory.
+
+	u - moves up one directory
+	
+	return or enter moves into a directory or executes the default action
+		when a file is selected.  
+
+	p creates a popup menu for the type of file selected.
+	P creates a popup menu of user defined programs.
+
+	m (letter) will set a bookmark for the letter. ma will set a bookmark for
+	the selected file under mark a.
+
+	t will tag or untag a file.  Files that are tagged will be acted on with 
+	the next command.  Either a : command like :d or a command selected from 
+	the Commands list.  If you change directories or alter the current 
+	directory the tag list will be reset.
+
+	' (letter) will goto the file of the set mark. 'a will goto the file set
+	with ma.
+	'' will goto the previous directory
+
+	The tab or space key moves between the file lists and command list.
+
+	The main menu is activated with meta or alt key + the underlined letter.
+	You can move through the menus with the j,k,l,h keys.  If you activate 
+	the menu and don't want to select anything just select Cancel under the 
+	Vide menu or Ctrl c + return.
+
+	Ctrl+ G will display the file properties in the status bar.
+			- name of the selected file
+			- size of the file
+			- modification time of the file
+			- access permissions of the file
+			- user id and group id separated by a colon
+			- total number of files in directory.
+	
+	/ + regular expression pattern will highlight all files matching the pattern. 
+		/\.c$ will highlight all .c files in the current directory.
+		/~$ will highlight all vim backup files in the current directory.
+	/[Return] will use the last regular expression search
+	
+	n will goto the next file matching the last pattern search.
+	N will goto the previous file matching the last pattern search.
+
+	: will enter command mode.
+		:d[elete] will move selected file to the trash.
+		:h will start vim with this help file.
+		:co[py] will copy the selected file to the other directory.
+		:m[ove] will move the selected file to the other directory.
+		:q quit vide.
+		:ls will create a popup menu showing all the notebook pages.  Selecting 
+			a menu item will jump to that notebook page.
+		:sh[ell] will start a term in the current directory.
+		:! + command will execute the command in a new vide term.  
+			:!top will execute the top program in a new notebook page.
+		:!! + command will execute pauseme + command in a new vide term.
+		:grep <args> will execute vim +"grep <args>".
+				This will only work when you use vim as your editor.
+		:0 will goto the top of the current file list.
+		:sb will change the other filelist to either the current directory
+			or a specified path.
+			:sb	will change the other filelist to the current directory
+			:sb /usr/local will change the other filelist to the path specified
+		:cd will change the current filelist to your home directory or to a
+			specified path.
+			:cd /usr/local - will change the current filelist to /usr/local.
+			:cd will change the current filelist to your home directory.
+		:marks will activate the Bookmarks menu.
+		:com will activate a popup menu of user defined commands.
+		:com [name] [action] will set a new user command.
+			The following macros can be used to set user commands.
+				%f will be replaced with all of the currently selected files.
+				%d will be replaced with the current directory.
+				%D will be replaced with the other directory.
+				%{Prompt string} will create a dialog window with the prompt string.
+				! followed by a command will execute that command inside a vide 
+					terminal.
+		:delc will create a popup menu that will remove the user command selected.
+		:exe will execute a program.
+			Please note if the program requires a console it must be executed in
+			a terminal.
+			:com ps exe rxvt -e top
+			or
+			:com ps !top
+		:/[pattern] will select files matching the [pattern]
+			This allows complex or frequent pattern searches to be set as a user
+			command.
+			:com backup /~$
+			lets you select all vim backup files with the :backup command
+		:his[tory] will create a popup menu of the last ten directories in each
+			file list.
+		:on[ly] will hide the command list and the other file list.
+		:new will show the hidden lists.
+
+		Filters can be set from the Options menu.  The file name filter can 
+			be set from the :command.
+
+		:set filter [pattern] will set the file list to only show files matching
+			the pattern.  :set filter \.c$ will only show the .c files in a d
+			directory.
+		:nofil[ter] removes the name filter and shows all files.
+		:fil[ter]  resets the name filter to the last pattern.
+		:in[vert] toggles back and forth between showing the files not matching
+			the name filter pattern, and files matching the pattern.
+
+		A filter can also be set as a :com
+			:com myfiles set filter \.c$  will set the :myfiles command to show
+			only .c files.
+
+
+		:sp will split the current vi with the selected file.
+			the current vi is the highlighted notebook tab.
+		:sp number will split the vi associated with number with the selected
+			file.
+		:b will load the selected file into the current vi.
+		:b [number] will load the selected file into the vi associated with that 
+			number. 
+		:vs will vertically split a vim window with the file.  This only works
+			with vim6.0
+
+		:pwd or :pw will show the full path of the current working directory 
+			in the status bar.
+
+		If you have more than one terminal open on a notebook page you can move 
+			between the different terms by clicking on the term with the mouse or 
+			by using the following:
+
+			<alt>w  j  moves down one term
+			<alt>w  k  moves up one term
+
+
+			<alt>w  n  creates a new term running sh
+			<alt>w  m  will lookup the word under the cursor with a program that 
+			can be set from the configuration dialog.  The default program is man.
+
+
+		
+
+	Ctrl+ C will return vide to normal mode.
+
+		
+ 
+	

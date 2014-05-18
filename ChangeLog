@@ -1,0 +1,148 @@
+Changes 0.5 to 0.5.2
+	Fixed annoying bug when using vim that would cause the clist to display
+	incorrectly.
+
+	A menu bar was added to each zvt term widget
+
+	The notebook page can now contain more than one terminal.
+
+	The terminals can now be detached from the notebook page.
+
+	New keybindings for the terms.
+			<alt>w  j moves down one term
+			<alt>w  k moves up one term
+			<alt>w  n creates a new terminal on the notebook page.
+			<alt>w  m creates a new term running man + word under the cursor.
+				This is similar to pressing K in vim with the added benefit of still
+				being able to see the original code while reading the man page.
+
+		When selecting a file from the term menu bar you can use your normal
+		bookmarks with ' and search for files with /pattern.  You cannot use
+		:commands.
+
+	The status bar message was changed to show a brief summary of the
+		selected file.  If more than one file is selected, the number of 
+		selected files is shown
+
+	:path command was changed to :pwd or :pw
+		or you can just use ctrl g which will show the full path and the file
+		information.
+
+Changes 0.4 to 0.5
+	All terminal colors may now be customized.
+	Fixed support for vile, elvis, and nvi.
+	Added hidden notebook tab option.
+	Fixed memory leak when using regcomp(); 
+	:ls command creates a popup menu and jumps to the  notebook page selected.
+	All notebook tabs now show the notebook page number.
+	Added relative directory to :cd and :sb commands - :cd projects
+		or :cd ~/misc
+	:q quit unless there are stll terminals open
+	:q! quit even if there are terminals open
+	:x write current vi and close page unless readonly.
+	Added a cancel option to all main menus.
+	Added :!! command :!![command] creates a shell and executes pauseme + the 
+		executed command.  :!!ls instead of :!pauseme ls
+	:path or :pa will show the full path of the current directory on the status 
+		bar - patch submited by Sergei Gnezdov
+	Ctrl+G will show the file properties of the current selected file on
+		the status bar - patch submited by Sergei Gnezdov
+	%f may be use inside of a %{} prompt command to put the current selected 
+		file inside of the popup entry - this probably should be expanded to
+		enable %d or %D to be use also. - patch submited by Eric Johnson
+
+Changes 0.3 to 0.4
+	added sorting function to bookmarks
+	added notebook interface and zvt
+	removed pauseme from the :! command
+	fixed bug with setting a :com without enough arguments.
+	If you use the mouse to select the notebook page, move the scrollbars,
+		or click on the column title the clist now grabs the focus back like
+		it should.  The up directory button still does not work properly.
+	Ctrl Q was changed to alt q.
+
+Changes 0.2.9 to 0.3
+	Fixed column title lists to change sort.
+	Fixed to work with gnome-terminal as it takes different arguments than
+		xterm or rxvt
+	Added support for vimclient.  Only works with gvim6.0
+		:vs command for vim6.0 running in a console
+	Removed the -f option from the mv command as it will delete a file if you 
+		tried to move the file into the same directory.
+	Changed the copy command to cp -R to allow copying of directories
+
+Changes 0.2.8 to 0.2.9
+
+	fixed bug in using a search pattern in a command. :com backup /~$
+	fixed command mode to use all the selected files with the command instead of
+		just the first selected file.
+	vi_server can now accept multiple files up to 100 files
+		The 100 file limit is just an arbitrary number that could be increased.
+	You can load multiple files into vi with :e
+	/[Return] will now search for the previous pattern 
+	t will tag or untag files in a directory
+	Added filters to the Options menu
+	Date, Size, Name
+	:fil[ter]
+	:nofil[ter]
+	:set filter [pattern]
+	:set filter invert [pattern]
+	:in[vert]
+	:on[ly] will hide the command list and other file list
+	:new will show the hidden file list
+
+
+Changes vide 0.27 to vide 0.28
+	
+	numbers used to show vi sessions are reused
+	vide will reattach to vi sessions from a previous vide session
+	support for nvi, elvis, vile
+	added code to handle vi_server from the filetypes popup menu
+	fixed bug when emptying trash directory from the other view that would
+	not let you move back into the trash directory.
+
+Changes vide 0.26 to vide 0.2.7
+	
+	fixed reloading of trash directory  when removing a large amount of files
+	fixed focus bug when useing dd on last file in a directory
+	added up directory button
+	added :x command same as :q
+	added '' will return to last position
+	added :his[tory] command
+	initial support for loading of files into a running vim.
+	
+
+
+Changes vide 0.2.5 to vide-0.2.6
+
+	vide can now handle file names with spaces
+	Scrollbars are now configurable
+	Mouse double click in command menu executes selected command
+	Mouse right click will create filetype popup menu
+	Changed updating of clists to reduce flicker
+	Fixed directory history when moving up a directory
+	:commands are now user defineable
+		:com popup menu of user commands
+		:com name action  to set user commands
+		:exe command to execute a program
+		:/ command to allow searches in user commands
+	:delc popup menu to delete commands
+
+
+
+Changes vide-0.2.4 to vide-0.2.5
+
+	bug fixes for grab focus and update of file lists
+
+Changes vide0.2.3 to vide0.2.4
+
+gg now moves to row 0 instead of g
+dd will delete the selected file
+N will search backwards for the last search pattern.
+m will set marks.
+' will goto set marks.
+:sp will change the other file list to the current file list directory or
+to a set path.
+:cd will change the current file list to your home enviroment or to a set path.
+configure option to allow starting vide in the current working directory.
+

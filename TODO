@@ -1,0 +1,11 @@
+The Gnome requirement should be removed.  The only Gnome libraries that are 
+used by Vide are the zvt terminal and gdk_imlib.  Everything else is written 
+in Gtk+.  Gdk_imlib is already available as an addition to Gtk+ without 
+requiring Gnome.  The zvt term can be separated from Gnome by writting a 
+new autoconf for zvt as it only requires Gtk+ and gdk_imlib. 
+
+The most requested feature is a ncurses based version.  This is on hold until 
+the current gui is fully established and stable.
+
+
+
