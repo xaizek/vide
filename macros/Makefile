@@ -1,4 +1,3 @@
-# Generated automatically from Makefile.in by configure.
 # Makefile.in generated automatically by automake 1.4a from Makefile.am
 
 # Copyright (C) 1994, 1995-8, 1999 Free Software Foundation, Inc.
@@ -16,6 +15,7 @@ SHELL = /bin/sh
 
 srcdir = .
 top_srcdir = ..
+
 prefix = /usr/local
 exec_prefix = ${prefix}
 
@@ -27,8 +27,8 @@ sysconfdir = ${prefix}/etc
 sharedstatedir = ${prefix}/com
 localstatedir = ${prefix}/var
 libdir = ${exec_prefix}/lib
-infodir = ${prefix}/info
-mandir = ${prefix}/man
+infodir = ${prefix}/share/info
+mandir = ${prefix}/share/man
 includedir = ${prefix}/include
 oldincludedir = /usr/include
 
@@ -40,15 +40,15 @@ pkgincludedir = $(includedir)/vide
 
 top_builddir = ..
 
-ACLOCAL = aclocal -I macros
+ACLOCAL = aclocal-1.11
 AUTOCONF = autoconf
-AUTOMAKE = automake
+AUTOMAKE = automake-1.11
 AUTOHEADER = autoheader
 
-INSTALL = /usr/bin/install -c
+INSTALL = /usr/bin/ginstall -c
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_DATA = ${INSTALL} -m 644
-INSTALL_SCRIPT = ${INSTALL_PROGRAM}
+INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_FLAG =
 transform = s,x,x,
 
@@ -59,32 +59,32 @@ NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
 CC = gcc
-GNOMEGNORBA_LIBS = -rdynamic -lgnorba -lORBitCosNaming -lORBit -lIIOP -lORBitutil -lnsl -lgnomeui -lart_lgpl -lgdk_imlib -lSM -lICE -lgtk -lgdk -lgmodule -lXi -lXext -lX11 -lgnome -lgnomesupport -lesd -laudiofile -lm -ldb1 -lglib -ldl
-GNOMEUI_LIBS = -rdynamic -lgnomeui -lart_lgpl -lgdk_imlib -lSM -lICE -lgtk -lgdk -lgmodule -lXi -lXext -lX11 -lgnome -lgnomesupport -lesd -laudiofile -lm -ldb1 -lglib -ldl
-GNOME_APPLETS_LIBS = 
-GNOME_CAPPLET_LIBS = 
-GNOME_CONFIG = /usr/bin/gnome-config
-GNOME_DOCKLETS_LIBS = 
-GNOME_INCLUDEDIR = -I/usr/include -DNEED_GNOMESUPPORT_H -I/usr/lib/gnome-libs/include -I/usr/lib/glib/include -I/usr/X11R6/include
-GNOME_LIBDIR = -rdynamic -L/usr/lib -L/usr/X11R6/lib
-GNOME_LIBS = -lgnome -lgnomesupport -lesd -laudiofile -lm -ldb1 -lglib -ldl
-GNORBA_CFLAGS = -I/usr/include -DNEED_GNOMESUPPORT_H -I/usr/lib/gnome-libs/include -I/usr/lib/glib/include -I/usr/X11R6/include
-GNORBA_LIBS = -rdynamic -L/usr/lib -L/usr/X11R6/lib -lgnorba -lORBitCosNaming -lORBit -lIIOP -lORBitutil -lnsl -lgnomeui -lart_lgpl -lgdk_imlib -lSM -lICE -lgtk -lgdk -lgmodule -lXi -lXext -lX11 -lgnome -lgnomesupport -lesd -laudiofile -lm -ldb1 -lglib -ldl
-GTKXMHTML_LIBS = -rdynamic -lgtkxmhtml -lXpm -ljpeg -lpng -lz -lSM -lICE -lgtk -lgdk -lgmodule -lglib -ldl -lXi -lXext -lX11 -lm
-GTK_CFLAGS = -I/usr/lib/glib/include -D_REENTRANT -I/usr/X11R6/include
+GNOMEGNORBA_LIBS = @GNOMEGNORBA_LIBS@
+GNOMEUI_LIBS = @GNOMEUI_LIBS@
+GNOME_APPLETS_LIBS = @GNOME_APPLETS_LIBS@
+GNOME_CAPPLET_LIBS = @GNOME_CAPPLET_LIBS@
+GNOME_CONFIG = @GNOME_CONFIG@
+GNOME_DOCKLETS_LIBS = @GNOME_DOCKLETS_LIBS@
+GNOME_INCLUDEDIR = @GNOME_INCLUDEDIR@
+GNOME_LIBDIR = @GNOME_LIBDIR@
+GNOME_LIBS = @GNOME_LIBS@
+GNORBA_CFLAGS = @GNORBA_CFLAGS@
+GNORBA_LIBS = @GNORBA_LIBS@
+GTKXMHTML_LIBS = @GTKXMHTML_LIBS@
+GTK_CFLAGS = -I/usr/include/gtk-1.2 -I/usr/include/glib-1.2 -I/usr/lib64/glib/include -D_REENTRANT
 GTK_CONFIG = /usr/bin/gtk-config
-GTK_LIBS = -L/usr/lib -L/usr/X11R6/lib -lgtk -lgdk -rdynamic -lgmodule -lgthread -lglib -lpthread -ldl -lXi -lXext -lX11 -lm
+GTK_LIBS = -L/usr/lib64 -L/usr/lib64 -lgtk -lgdk -rdynamic -lgmodule -lgthread -lglib -lpthread -ldl -lXext -lX11 -lm
 MAKEINFO = makeinfo
-ORBIT_CFLAGS = -I/usr/lib/glib/include -I/usr/include
-ORBIT_CONFIG = /usr/bin/orbit-config
-ORBIT_IDL = /usr/bin/orbit-idl
-ORBIT_LIBS = -L/usr/lib -lORBitCosNaming -lORBit -lIIOP -lORBitutil -lglib -lnsl -lm
+ORBIT_CFLAGS = @ORBIT_CFLAGS@
+ORBIT_CONFIG = @ORBIT_CONFIG@
+ORBIT_IDL = @ORBIT_IDL@
+ORBIT_LIBS = @ORBIT_LIBS@
 PACKAGE = vide
-PTHREAD_LIB = -lpthread
+PTHREAD_LIB = @PTHREAD_LIB@
 VERSION = 0.5.2
-XPM_LIBS = -lXpm
-ZVT_LIBS = -rdynamic -L/usr/lib -L/usr/X11R6/lib -lzvt -lutil -lSM -lICE -lgtk -lgdk -lgmodule -lglib -ldl -lXi -lXext -lX11 -lm
-cflags_set = yes
+XPM_LIBS = @XPM_LIBS@
+ZVT_LIBS = @ZVT_LIBS@
+cflags_set = @cflags_set@
 cxxflags_set = @cxxflags_set@
 
 MACROS =    aclocal-include.m4				  compiler-flags.m4				  curses.m4					  gnome-bonobo-check.m4				  gnome-fileutils.m4				  gnome-ghttp-check.m4				  gnome-gnorba-check.m4				  gnome-guile-checks.m4				  gnome-libgtop-check.m4			  gnome-objc-checks.m4				  gnome-orbit-check.m4				  gnome-print-check.m4				  gnome-pthread-check.m4			  gnome-support.m4				  gnome-undelfs.m4				  gnome-vfs.m4					  gnome-x-checks.m4				  gnome-xml-check.m4				  gnome.m4					  gperf-check.m4				  linger.m4					  need-declaration.m4
@@ -93,9 +93,9 @@ MACROS =    aclocal-include.m4				  compiler-flags.m4				  curses.m4					  gnome
 EXTRA_DIST = $(MACROS) gnome-common.m4 autogen.sh
 MAINTAINERCLEANFILES = macros.dep
 
-#gnome_aclocaldir = $(datadir)/aclocal/gnome
+@INSIDE_GNOME_COMMON_TRUE@gnome_aclocaldir = $(datadir)/aclocal/gnome
 
-#gnome_aclocal_DATA = $(MACROS) gnome-macros.dep gnome-common.m4 autogen.sh
+@INSIDE_GNOME_COMMON_TRUE@gnome_aclocal_DATA = $(MACROS) gnome-macros.dep gnome-common.m4 autogen.sh
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../config.h
 CONFIG_CLEAN_FILES = 
@@ -226,8 +226,8 @@ maintainer-clean-generic clean mostlyclean distclean maintainer-clean
 macros.dep: Makefile.am
 	@echo '$$(top_srcdir)/aclocal.m4: $(MACROS:%=macros/%)' > $@
 
-#gnome-macros.dep: Makefile.am
-#	@echo '$$(top_srcdir)/aclocal.m4: $(MACROS:%=$(gnome_aclocaldir)/%)' > $@
+@INSIDE_GNOME_COMMON_TRUE@gnome-macros.dep: Makefile.am
+@INSIDE_GNOME_COMMON_TRUE@	@echo '$$(top_srcdir)/aclocal.m4: $(MACROS:%=$(gnome_aclocaldir)/%)' > $@
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
