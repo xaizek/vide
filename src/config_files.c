@@ -43,9 +43,9 @@ static void
 create_memo_file(gchar *memo_file)
 {
 	FILE *f;
-	gchar memo_text[] = {"
-		This is here as an example.  I find it useful.  But you can
-			remove it from the command list, if you find it annoying.\n
+	gchar memo_text[] = {"\
+		This is here as an example.  I find it useful.  But you can\
+			remove it from the command list, if you find it annoying.\n\
 			"};
 
 	if((f = fopen(memo_file, "w")) == NULL)

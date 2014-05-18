@@ -33,8 +33,8 @@
 #include <gdk/gdkx.h>
 #include <gdk/gdkprivate.h>
 #include <gdk/gdkkeysyms.h>
-#include<gnome.h>
-#include <zvt/vt.h>
+/* #include<gnome.h> */
+/* #include <zvt/vt.h> */
 #include<X11/Xatom.h>
 
 
@@ -44,7 +44,7 @@ term_key_cb(GtkWidget *widget, GdkEventKey *event, ZvtTerm *term);
 void
 write_to_term(ZvtTerm *term, gchar *message)
 {
-	write(term->vx->vt.keyfd, message, strlen(message));
+	/* write(term->vx->vt.keyfd, message, strlen(message)); */
 }
 
 void
@@ -203,8 +203,8 @@ set_color_scheme(ZvtTerm *term)
 	}
 
 
-	zvt_term_set_color_scheme((ZvtTerm *)term, red, green, blue);
-	c.pixel = term->colors[17];
+	/* zvt_term_set_color_scheme((ZvtTerm *)term, red, green, blue); */
+	/* c.pixel = term->colors[17]; */
 	gdk_window_set_background(GTK_WIDGET(term)->window, &c);
 	gtk_widget_queue_draw(GTK_WIDGET(term));
 }
@@ -231,13 +231,14 @@ get_focus_zvt(GtkNotebook *notebook, gint page_number)
 	{
 		ch = ((GtkBoxChild*)(tmp->data))->widget;
 
-		if(ZVT_IS_TERM(ch))
+		/* if(ZVT_IS_TERM(ch)) */
+        if(0)
 		{
 			gint term_number = GPOINTER_TO_INT(gtk_object_get_data(GTK_OBJECT(ch),
 						"term_number"));
 			if(term_number == focus_term)
 			{
-				return ZVT_TERM(ch);
+				return NULL;//ZVT_TERM(ch);
 			}
 		}
 	}
@@ -263,8 +264,8 @@ get_nth_zvt(GtkNotebook *notebook, gint n)
 	{
 		ch = ((GtkBoxChild*)(tmp->data))->widget;
 
-		if(ZVT_IS_TERM(ch))
-			return ZVT_TERM(ch);
+		if(0 /*ZVT_IS_TERM(ch)*/)
+			return NULL;//ZVT_TERM(ch);
 	}
 	return NULL;
 }
@@ -273,26 +274,26 @@ void UpdateTerm (ZvtTerm * term)
 {
    if(zvt.use_pixmap)
 	 {
-		 zvt_term_set_background(ZVT_TERM(term), zvt.pixmap,
-				 zvt.transparent, ZVT_BACKGROUND_SHADED);
+		 /* zvt_term_set_background(ZVT_TERM(term), zvt.pixmap, */
+				 /* zvt.transparent, ZVT_BACKGROUND_SHADED); */
 	 }
 	 else if(zvt.transparent)
 	 {
-			zvt_term_set_background(term, NULL, zvt.transparent, 0);
+			/* zvt_term_set_background(term, NULL, zvt.transparent, 0); */
 	 }
 	 else
-		 zvt_term_set_background(ZVT_TERM(term), NULL, 0, 0);
+		 ;/* zvt_term_set_background(ZVT_TERM(term), NULL, 0, 0); */
 
-  zvt_term_set_font_name(ZVT_TERM (term), zvt.term_font);
-  zvt_term_set_scrollback(ZVT_TERM (term), zvt.scroll_lines);
-  zvt_term_set_blink (ZVT_TERM (term), zvt.use_blinking_cursor);
-  zvt_term_set_bell (ZVT_TERM (term), zvt.terminal_bell);
+  /* zvt_term_set_font_name(ZVT_TERM (term), zvt.term_font); */
+  /* zvt_term_set_scrollback(ZVT_TERM (term), zvt.scroll_lines); */
+  /* zvt_term_set_blink (ZVT_TERM (term), zvt.use_blinking_cursor); */
+  /* zvt_term_set_bell (ZVT_TERM (term), zvt.terminal_bell); */
 
-  set_color_scheme (ZVT_TERM(term));
+  /* set_color_scheme (ZVT_TERM(term)); */
 
 
-  zvt_term_set_scroll_on_keystroke (ZVT_TERM (term), zvt.scroll_on_keystroke);
-  zvt_term_set_scroll_on_output (ZVT_TERM (term), zvt.scroll_on_output);
+  /* zvt_term_set_scroll_on_keystroke (ZVT_TERM (term), zvt.scroll_on_keystroke); */
+  /* zvt_term_set_scroll_on_output (ZVT_TERM (term), zvt.scroll_on_output); */
 
   gtk_widget_queue_draw (GTK_WIDGET(term));
 }
@@ -304,7 +305,7 @@ void update_all_terms()
   
   while ((ch = get_nth_zvt(GTK_NOTEBOOK(app.notebook),a)))
     {
-      UpdateTerm (ZVT_TERM(ch));
+      /* UpdateTerm (ZVT_TERM(ch)); */
       a++;
     }
   
@@ -337,7 +338,7 @@ void update_all_terms()
 
 		 gtk_widget_hide(GTK_WIDGET(term));
 
-		 zvt_term_closepty(term);
+		 /* zvt_term_closepty(term); */
 		 gtk_widget_destroy(GTK_WIDGET(term));
 		 gtk_object_set_data(GTK_OBJECT(vbox), "term_count",
 				 GUINT_TO_POINTER(term_count));
@@ -347,12 +348,12 @@ void update_all_terms()
 		 for(tmp = child; tmp != NULL; tmp = tmp->next)
 		 {
 			 ch = ((GtkBoxChild*)(tmp->data))->widget;
-			 if(ZVT_IS_TERM(ch))
-			 {
-				 term_number++;
-				 gtk_object_set_data(GTK_OBJECT(ch), "term_number",
-						 GUINT_TO_POINTER(term_number));
-			 }
+			 /* if(ZVT_IS_TERM(ch)) */
+			 /* { */
+				 /* term_number++; */
+				 /* gtk_object_set_data(GTK_OBJECT(ch), "term_number", */
+						 /* GUINT_TO_POINTER(term_number)); */
+			 /* } */
 		 }
 		 /* set focus_term and notebook tab */
 
@@ -398,7 +399,7 @@ void update_all_terms()
 			 cfg.term_count--;
 		 }
 
-		 zvt_term_closepty(term);
+		 /* zvt_term_closepty(term); */
 		 /* reset the notebook tabs and vi buffer list */
 		 page = 1;
 		 while((tmp_term = get_nth_zvt(GTK_NOTEBOOK(app.notebook), page)))
@@ -479,9 +480,9 @@ switch_term_key_cb(GtkWidget *widget, GdkEventKey *event, ZvtTerm *term)
 	 	 for(tmp = child; tmp != NULL; tmp = tmp->next)
 		 {
 			 ch = ((GtkBoxChild*)(tmp->data))->widget;
-			 if(ZVT_IS_TERM(ch))
-				 tmp_num = GPOINTER_TO_INT(gtk_object_get_data(GTK_OBJECT(ch),
-							 "term_number"));
+			 /* if(ZVT_IS_TERM(ch)) */
+				 /* tmp_num = GPOINTER_TO_INT(gtk_object_get_data(GTK_OBJECT(ch), */
+							 /* "term_number")); */
 			 if(tmp_num == next_term)
 			 {
 				 GtkWidget *term_label;
@@ -518,17 +519,17 @@ switch_term_key_cb(GtkWidget *widget, GdkEventKey *event, ZvtTerm *term)
 		case 'm':
 			{
 				gchar buf[256];
-				gchar * word = zvt_term_get_buffer(term, NULL, VT_SELTYPE_WORD,
-						term->vx->vt.cursorx, term->vx->vt.cursory,
-						term->vx->vt.cursorx, term->vx->vt.cursory);
-				g_snprintf(buf, sizeof(buf), "%s %s", cfg.man_program, word);
+				/* gchar * word = zvt_term_get_buffer(term, NULL, VT_SELTYPE_WORD, */
+				/* 		term->vx->vt.cursorx, term->vx->vt.cursory, */
+				/* 		term->vx->vt.cursorx, term->vx->vt.cursory); */
+				/* g_snprintf(buf, sizeof(buf), "%s %s", cfg.man_program, word); */
 				create_zterm(buf, FALSE);
 				/*
 				g_print("cursorx is %d\n", term->vx->vt.cursorx);
 				g_print("cursory is %d\n", term->vx->vt.cursory);
 				g_print("word under cursor is %s\n", word);
 				*/
-				g_free(word);
+				/* g_free(word); */
 			}
 			break;
 		default:
@@ -626,6 +627,7 @@ term_key_cb(GtkWidget *widget, GdkEventKey *event, ZvtTerm *term)
 	}
 }
 
+typedef int VTTITLE_TYPE;
 
  static void
  title_changed_event (ZvtTerm *term, VTTITLE_TYPE type, char *newtitle)
@@ -706,7 +708,7 @@ create_zterm (gchar *command, gboolean new_page)
 	 /* reset the page to the real notebook page number */
 	 page = cfg.term_count +1;
 
-   term = (ZvtTerm *)zvt_term_new_with_size(80,24);
+   /* term = (ZvtTerm *)zvt_term_new_with_size(80,24); */
 	 gtk_object_set_data(GTK_OBJECT(term), "label_text", buf);
 
 	 if(new_page)
@@ -754,26 +756,26 @@ create_zterm (gchar *command, gboolean new_page)
 
    /* set terminal options */
    gtk_widget_show (GTK_WIDGET(term));
-   zvt_term_set_font_name(ZVT_TERM (term), zvt.term_font);
-   zvt_term_set_blink (ZVT_TERM (term), zvt.use_blinking_cursor);
-   zvt_term_set_bell (ZVT_TERM (term), zvt.terminal_bell);
-   zvt_term_set_scrollback(ZVT_TERM (term), zvt.scroll_lines);
-   zvt_term_set_scroll_on_keystroke (ZVT_TERM (term), zvt.scroll_on_keystroke);
-   zvt_term_set_scroll_on_output (ZVT_TERM (term), zvt.scroll_on_output);
-   zvt_term_set_wordclass (ZVT_TERM (term), "-A-Za-z0-9/_:.,?+%=");
+   /* zvt_term_set_font_name(ZVT_TERM (term), zvt.term_font); */
+   /* zvt_term_set_blink (ZVT_TERM (term), zvt.use_blinking_cursor); */
+   /* zvt_term_set_bell (ZVT_TERM (term), zvt.terminal_bell); */
+   /* zvt_term_set_scrollback(ZVT_TERM (term), zvt.scroll_lines); */
+   /* zvt_term_set_scroll_on_keystroke (ZVT_TERM (term), zvt.scroll_on_keystroke); */
+   /* zvt_term_set_scroll_on_output (ZVT_TERM (term), zvt.scroll_on_output); */
+   /* zvt_term_set_wordclass (ZVT_TERM (term), "-A-Za-z0-9/_:.,?+%="); */
 	 if(zvt.use_pixmap)
 	 {
-		 zvt_term_set_background(ZVT_TERM(term), zvt.pixmap,
-				 zvt.transparent, ZVT_BACKGROUND_SHADED);
+		 /* zvt_term_set_background(ZVT_TERM(term), zvt.pixmap, */
+				 /* zvt.transparent, ZVT_BACKGROUND_SHADED); */
 	 }
 	 else if(zvt.transparent)
 	 {
-			zvt_term_set_background(term, NULL, zvt.transparent, 0);
+			/* zvt_term_set_background(term, NULL, zvt.transparent, 0); */
 	 }
 	 else
-		 zvt_term_set_background(ZVT_TERM(term), NULL, 0, 0);
+		 ;/* zvt_term_set_background(ZVT_TERM(term), NULL, 0, 0); */
 
-	 zvt_term_set_del_key_swap(ZVT_TERM(term), zvt.swap_backspace);
+	 /* zvt_term_set_del_key_swap(ZVT_TERM(term), zvt.swap_backspace); */
 	 if(new_page)
 	 	cfg.term_count++;
 	 gtk_notebook_set_show_tabs(GTK_NOTEBOOK(app.notebook), zvt.show_tabs);
@@ -849,74 +851,74 @@ create_zterm (gchar *command, gboolean new_page)
    env_copy [i] = NULL;
 
 
-   /* fork the shell or program */
-   switch (zvt_term_forkpty(ZVT_TERM (term), ZVT_TERM_DO_UTMP_LOG |  ZVT_TERM_DO_WTMP_LOG)) {
-     case -1:
-     perror("ERROR: unable to fork:");
-     exit(1);
-     break;
-
-     case 0:
-     { 
-			 GString *shell, *name;
-			 gchar *args[4];
-
-       /* get shell from passwd */
-       pw = getpwuid(getuid());
-       if (pw) {
-         shell = g_string_new(pw->pw_shell);
-         if (login_shell)
-           name = g_string_new("-");
-         else
-           name = g_string_new("");
-
-         g_string_append(name, strrchr(pw->pw_shell, '/'));
-       } else {
-         shell = g_string_new("/bin/sh");
-         if (login_shell)
-           name = g_string_new("-sh");
-         else
-           name = g_string_new("sh");
-       }
-
-			 /*
-			  * Without this the title change may not work.
-				* I'm not sure why but if you launch vide from a shell this is 
-				* not needed.  But if you launch it from a window manager menu
-				* the title_changed event is not caught unless you specify the
-				* term window id.  This is from the gnome-terminal application
-				* and is undocumented in the zvt docs.
-				*/
-			 sprintf(buffer, "WINDOWID=%d", 
-				 (int) GDK_WINDOW_XWINDOW(GTK_WIDGET(term)->window));
-	 			env_copy[winid_pos] = buffer;
-
-
-			 if(!strcmp(command, "sh"))
-			 {
-				 execle(shell->str, name->str, NULL, env_copy);
-				 _exit(127);
-			 }
-			 else
-			 {
-				 args[0] = "sh";
-		 		 args[1] = "-c";
-		 		 args[2] = command;
-		 		 args[3] = NULL;
-
-				 /* This ensures that the signals are sent to the correct window 
-					* see the previous comment
-					*/
-				 environ = env_copy;
-
-		 		 execvp(args[0], args);
-				 _exit(127);
-			 }
-     }
-
-     default:
-     break;
-   }
+//   /* fork the shell or program */
+//   switch (zvt_term_forkpty(ZVT_TERM (term), ZVT_TERM_DO_UTMP_LOG |  ZVT_TERM_DO_WTMP_LOG)) {
+//     case -1:
+//     perror("ERROR: unable to fork:");
+//     exit(1);
+//     break;
+//
+//     case 0:
+//     { 
+//			 GString *shell, *name;
+//			 gchar *args[4];
+//
+//       /* get shell from passwd */
+//       pw = getpwuid(getuid());
+//       if (pw) {
+//         shell = g_string_new(pw->pw_shell);
+//         if (login_shell)
+//           name = g_string_new("-");
+//         else
+//           name = g_string_new("");
+//
+//         g_string_append(name, strrchr(pw->pw_shell, '/'));
+//       } else {
+//         shell = g_string_new("/bin/sh");
+//         if (login_shell)
+//           name = g_string_new("-sh");
+//         else
+//           name = g_string_new("sh");
+//       }
+//
+//			 /*
+//			  * Without this the title change may not work.
+//				* I'm not sure why but if you launch vide from a shell this is 
+//				* not needed.  But if you launch it from a window manager menu
+//				* the title_changed event is not caught unless you specify the
+//				* term window id.  This is from the gnome-terminal application
+//				* and is undocumented in the zvt docs.
+//				*/
+//			 sprintf(buffer, "WINDOWID=%d", 
+//				 (int) GDK_WINDOW_XWINDOW(GTK_WIDGET(term)->window));
+//	 			env_copy[winid_pos] = buffer;
+//
+//
+//			 if(!strcmp(command, "sh"))
+//			 {
+//				 execle(shell->str, name->str, NULL, env_copy);
+//				 _exit(127);
+//			 }
+//			 else
+//			 {
+//				 args[0] = "sh";
+//		 		 args[1] = "-c";
+//		 		 args[2] = command;
+//		 		 args[3] = NULL;
+//
+//				 /* This ensures that the signals are sent to the correct window 
+//					* see the previous comment
+//					*/
+//				 environ = env_copy;
+//
+//		 		 execvp(args[0], args);
+//				 _exit(127);
+//			 }
+//     }
+//
+//     default:
+//     break;
+//   }
 
 	 if(new_page)
 	 	gtk_notebook_set_page(GTK_NOTEBOOK(app.notebook), -1);

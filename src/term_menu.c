@@ -19,7 +19,7 @@
 #include "vide.h"
 
 
-
+typedef int VTTITLE_TYPE;
 
 static void
 change_title(ZvtTerm *term, VTTITLE_TYPE type, char *newtitle,
@@ -31,7 +31,7 @@ change_title(ZvtTerm *term, VTTITLE_TYPE type, char *newtitle,
 static void
 close_term_window(ZvtTerm *term, gpointer data)
 {
-	zvt_term_closepty(term);
+	/* zvt_term_closepty(term); */
 	gtk_widget_destroy(GTK_WIDGET(term)->parent);
 }
 
@@ -103,12 +103,12 @@ detach_term(GtkWidget *widget, ZvtTerm *term)
 		for(tmp = child; tmp != NULL; tmp = tmp->next)
 		{
 			ch = ((GtkBoxChild*)(tmp->data))->widget;
-			if(ZVT_IS_TERM(ch))
-			{
-				term_count++;
-				gtk_object_set_data(GTK_OBJECT(ch), "term_number",
-							GUINT_TO_POINTER(term_count));
-			}
+			/* if(ZVT_IS_TERM(ch)) */
+			/* { */
+			/* 	term_count++; */
+			/* 	gtk_object_set_data(GTK_OBJECT(ch), "term_number", */
+			/* 				GUINT_TO_POINTER(term_count)); */
+			/* } */
 		}
 		tmp_term = get_nth_zvt(GTK_NOTEBOOK(app.notebook),
 				gtk_notebook_get_current_page(GTK_NOTEBOOK(app.notebook)));
@@ -164,12 +164,12 @@ static void
 lookup_word(GtkWidget *widget, ZvtTerm* term)
 {
 	gchar buf[256];
-	gchar * word = zvt_term_get_buffer(term, NULL, VT_SELTYPE_WORD,
-			term->vx->vt.cursorx, term->vx->vt.cursory,
-			term->vx->vt.cursorx, term->vx->vt.cursory);
-	g_snprintf(buf, sizeof(buf), "%s %s", cfg.man_program, word);
-	create_zterm(buf, FALSE);
-	g_free(word);
+	/* gchar * word = zvt_term_get_buffer(term, NULL, VT_SELTYPE_WORD, */
+	/* 		term->vx->vt.cursorx, term->vx->vt.cursory, */
+	/* 		term->vx->vt.cursorx, term->vx->vt.cursory); */
+	/* g_snprintf(buf, sizeof(buf), "%s %s", cfg.man_program, word); */
+	/* create_zterm(buf, FALSE); */
+	/* g_free(word); */
 }
 
 /*

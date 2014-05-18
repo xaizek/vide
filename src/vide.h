@@ -26,7 +26,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <limits.h>
-#include <zvt/zvtterm.h>
+/* #include <zvt/zvtterm.h> */
 
 #define VERSION "0.5.2"
 #define NAME_MAX 255
@@ -258,6 +258,10 @@ typedef struct _Zvt
 	GdkColor foreground[2];
 }Zvt;
 
+
+typedef struct _ZvtTerm
+{
+}ZvtTerm;
 
 typedef struct _Config
 {

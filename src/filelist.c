@@ -29,6 +29,7 @@
 //#include <grp.h>
 #include <unistd.h>
 #include "vide.h"
+#include <time.h>
 
 typedef struct
 {

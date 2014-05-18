@@ -28,7 +28,7 @@
 #include <time.h>
 #include "vide.h"
 #include <gdk/gdkx.h>
-#include <gnome.h>
+/* #include <gnome.h> */
 #include "icon_dirparent.xpm"
 
 struct sentinel {
